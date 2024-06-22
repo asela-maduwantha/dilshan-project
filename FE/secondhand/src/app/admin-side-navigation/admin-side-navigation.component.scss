@@ -1,0 +1,82 @@
+.side-nav-component {
+  background-color: #2A7AAD;
+  height: 100vh;
+  color: #FFFFFF;
+  width: 250px;
+  transition: width 0.3s;
+  overflow: hidden;
+  position: relative;
+
+  &.collapsed {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .toggle-icon {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-menu {
+    .menu-item {
+      position: relative;
+
+      .title {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #1E5A89;
+        }
+
+        i {
+          margin-right: 10px;
+        }
+
+        p {
+          margin: 0;
+          flex-grow: 1;
+        }
+
+        a {
+          text-decoration: none;
+          color: #FFFFFF;
+          flex-grow: 1;
+        }
+      }
+
+      .sub-menu {
+        padding: 10px 20px;
+        background-color: #1E5A89;
+        display: flex;
+        flex-direction: column;
+
+        .sub-menu-item {
+          display: flex;
+          align-items: center;
+          padding: 10px 0;
+
+          p, a {
+            margin: 0;
+            margin-left: 10px;
+            text-decoration: none;
+            color: #FFFFFF;
+          }
+        }
+      }
+    }
+  }
+
+  &.collapsed .nav-menu .menu-item .title p,
+  &.collapsed .nav-menu .menu-item .sub-menu {
+    display: none;
+  }
+}

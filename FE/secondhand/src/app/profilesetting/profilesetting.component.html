@@ -1,0 +1,57 @@
+<div class="profile-settings">
+  <div class="settings-card">
+    <strong>Profile Settings</strong>
+
+    <div class="input-container">
+      <label>Admin Name:</label>
+      <span *ngIf="!isEditingName" class="info">{{ adminData.user_name }}</span>
+      <input *ngIf="isEditingName" [(ngModel)]="adminData.user_name" class="info" />
+      <a  (click)="toggleEdit('name')" class="edit-link">
+        {{ isEditingName ? 'Save' : 'Edit' }}
+      </a>
+    </div>
+
+    <div class="input-container">
+      <label>Admin Email:</label>
+      <span *ngIf="!isEditingEmail" class="info">{{ adminData.email }}</span>
+      <input *ngIf="isEditingEmail" [(ngModel)]="adminData.email" class="info" />
+      <a  (click)="toggleEdit('email')" class="edit-link">
+        {{ isEditingEmail ? 'Save' : 'Edit' }}
+      </a>
+    </div>
+
+    <div class="button-container">
+      <button class="confirm-button" [disabled]="!isFormEdited" (click)="updateAdminData()">Confirm</button>
+      <button class="cancel-button" (click)="resetForm()">Cancel</button>
+    </div>
+
+    <div class="input-container">
+      <label>Change Password:</label>
+      <button class="danger-button" (click)="toggleChangePassword()">Change Password</button>
+    </div>
+
+    <div *ngIf="isChangingPassword">
+      <div class="input-container">
+        <label>Old Password:</label>
+        <input type="password" [(ngModel)]="passwordData.oldPassword" class="info" />
+      </div>
+      <div class="input-container">
+        <label>New Password:</label>
+        <input type="password" [(ngModel)]="passwordData.newPassword" class="info" />
+      </div>
+      <div class="input-container">
+        <label>Confirm New Password:</label>
+        <input type="password" [(ngModel)]="passwordData.confirmNewPassword" class="info" />
+      </div>
+
+      <div class="button-container">
+        <button class="confirm-button" (click)="changePassword()">Confirm</button>
+        <button class="cancel-button" (click)="toggleChangePassword()">Cancel</button>
+      </div>
+    </div>
+
+    <div *ngIf="message" [ngClass]="{'error-message': isError, 'success-message': !isError}">
+      {{ message }}
+    </div>
+  </div>
+</div>
